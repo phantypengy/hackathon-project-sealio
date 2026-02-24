@@ -130,7 +130,7 @@ marquee {
 
 .video {
   flex: 1 1 300px;
-  max-width: 335px;
+  max-width: 300px;
   width: 300px;
   background-color: white;
   overflow: auto;
