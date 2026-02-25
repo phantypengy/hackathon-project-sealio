@@ -7,8 +7,8 @@ document.addEventListener("DOMContentLoaded", () => {
   let videos = Array.from(grid.children); //makes an array of the children of grid (the video divs)
 
   function shuffle(array) {
-    for (const i = array.length - 1; i > 0; i--) {
-      let j = Math.floor(Math.random() * (i + 1));
+    for (var i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
       [array[i], array[j]] = [array[j], array[i]];
     }
   } //randomizes the order of the array!!
