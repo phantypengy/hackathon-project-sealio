@@ -60,11 +60,20 @@ html {
   background-color: rgb(240, 240, 240);
   width: 500px;
   border: solid 2px;
-  margin-left: 2px;
+  border-left: none;
 }
 
 .searchbar:focus {
   outline: none;
+}
+
+.searchicon {
+  text-align: center;
+  margin-left: 2px;
+  background-color: rgb(240, 240, 240);
+  border: solid 2px;
+  border-right: none;
+  width: 2em;
 }
 
 .searchicon:hover {
