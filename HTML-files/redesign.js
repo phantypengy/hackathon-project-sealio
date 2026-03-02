@@ -16,3 +16,22 @@ document.addEventListener("DOMContentLoaded", () => {
   shuffle(videos); //calls the shuffle function on the videos array
   videos.forEach((video) => grid.appendChild(video));
 });
+
+const playerVideo = document.getElementById("playerVideo");
+const playerModal = document.getElementById("playerModal");
+const closePlayer = document.getElementById("closePlayer");
+
+document.querySelectorAll(".video").forEach((video) => {
+  video.addEventListener("click", () => {
+    const src = video.dataset.src;
+    playerVideo.src = src;
+    playerModal.style.display = "flex";
+    playerVideo.play();
+  });
+});
+
+function closeVideo() {
+  playerModal.style.display = "none";
+  playerVideo.pause();
+  playerVideo.src = "";
+}
