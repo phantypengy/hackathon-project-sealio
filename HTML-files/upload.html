@@ -5,6 +5,7 @@
   <head>
     <title>Sealio - Upload</title>
     <script src="upload.js" defer></script>
+    <script src="shared.js" defer></script>
   </head>
   <body>
     <div class="app">
@@ -14,16 +15,29 @@
         </div>
         <div class="header-bottom">
           <div class="navbar">
-            <div class="button">Home</div>
-            <div class="button">About</div>
-            <div class="button">Saved</div>
-            <div class="button" style="margin-right: 1px">Upload</div>
+            <div
+              class="button"
+              onclick="window.location.href = 'redesign.html'"
+            >
+              Home
+            </div>
+            <div class="button" onclick="window.location.href = 'login.html'">
+              Login
+            </div>
+            <div
+              class="button"
+              onclick="window.location.href = 'upload.html'"
+              style="margin-right: 1px"
+            >
+              Upload
+            </div>
             <div class="bar">
               <marquee behavior="scroll" direction="left">
                 Welcome to Sealio!
               </marquee>
-            </div>
           </div>
+            <div id="navUsername" class="navUsername"></div>
+            <div class="button" onclick="logout()">Logout</div>
         </div>
       </header>
       <div class="body">

@@ -1,0 +1,97 @@
+<!doctype html>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="redesign.css" />
+<html>
+  <head>
+    <title>Sealio - Login</title>
+    <script src="login.js" defer></script>
+    <script src="shared.js" defer></script>
+  </head>
+  <body>
+    <div class="app">
+      <header class="header">
+        <div class="header-top">
+          <h1 class="title">Sealio</h1>
+        </div>
+        <div class="header-bottom">
+          <div class="navbar">
+            <div
+              class="button"
+              onclick="window.location.href = 'redesign.html'"
+            >
+              Home
+            </div>
+            <div class="button" onclick="window.location.href = 'login.html'">
+              Login
+            </div>
+            <div
+              class="button"
+              onclick="window.location.href = 'upload.html'"
+              style="margin-right: 1px"
+            >
+              Upload
+            </div>
+
+            <div class="bar">
+              <marquee behavior="scroll" direction="left">
+                Welcome to Sealio!
+              </marquee>
+            </div>
+            <div id="navUsername" class="navUsername"></div>
+            <div class="button" onclick="logout()">Logout</div>
+          </div>
+        </div>
+      </header>
+      <div class="body">
+        <div class="content">
+          <div class="loginContainer">
+            <div class="loginWindow">
+              <div class="loginTabs">
+                <div class="loginTab active" onclick="switchTab('login')">
+                  Login
+                </div>
+                <div class="loginTab" onclick="switchTab('signup')">
+                  Sign Up
+                </div>
+              </div>
+
+              <!-- Login form -->
+              <div id="loginForm">
+                <label>Username</label>
+                <input type="text" id="loginUsername" placeholder="Username" />
+                <label>Password</label>
+                <input
+                  type="password"
+                  id="loginPassword"
+                  placeholder="Password"
+                />
+                <p id="loginError" class="errorText"></p>
+                <button onclick="login()">Log in</button>
+              </div>
+
+              <!-- Signup form -->
+              <div id="signupForm" style="display: none">
+                <label>Username</label>
+                <input type="text" id="signupUsername" placeholder="Username" />
+                <label>Password</label>
+                <input
+                  type="password"
+                  id="signupPassword"
+                  placeholder="Password"
+                />
+                <label>Confirm Password</label>
+                <input
+                  type="password"
+                  id="signupConfirm"
+                  placeholder="Confirm Password"
+                />
+                <p id="signupError" class="errorText"></p>
+                <button onclick="signup()">Sign Up</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

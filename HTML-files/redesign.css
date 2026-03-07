@@ -248,3 +248,64 @@ marquee {
 .dropZone.dragOver {
   background-color: rgb(189, 184, 184);
 }
+
+.loginContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.loginWindow {
+  border: inset 3px black;
+  background-color: white;
+  padding: 20px;
+  margin-top: 100px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.loginTabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.loginTab {
+  cursor: pointer;
+  padding: 5px 10px;
+  border-bottom: 2px solid transparent;
+}
+
+.loginTab.active {
+  border-bottom: 2px solid black;
+}
+
+.errorText {
+  color: red;
+  font-size: 12px;
+  margin: 0;
+}
+
+.loginWindow label {
+  display: block;
+  margin-bottom: 2px;
+}
+
+.loginWindow input {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px;
+  font-size: 14px;
+}
+
+.navUsername {
+  padding: 0 10px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  white-space: nowrap;
+  border: outset 1px black;
+}

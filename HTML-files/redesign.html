@@ -3,8 +3,9 @@
 <link rel="stylesheet" href="redesign.css" />
 <html>
   <head>
-    <title>Sealio Aero</title>
+    <title>Sealio - Home</title>
     <script src="redesign.js" defer></script>
+    <script src="shared.js" defer></script>
   </head>
   <body>
     <div class="app">
@@ -14,15 +15,29 @@
         </div>
         <div class="header-bottom">
           <div class="navbar">
-            <div class="button">Home</div>
-            <div class="button">About</div>
-            <div class="button">Saved</div>
-            <div class="button" style="margin-right: 1px">Upload</div>
+            <div
+              class="button"
+              onclick="window.location.href = 'redesign.html'"
+            >
+              Home
+            </div>
+            <div class="button" onclick="window.location.href = 'login.html'">
+              Login
+            </div>
+            <div
+              class="button"
+              onclick="window.location.href = 'upload.html'"
+              style="margin-right: 1px"
+            >
+              Upload
+            </div>
             <div class="bar">
               <marquee behavior="scroll" direction="left">
                 Welcome to Sealio!
               </marquee>
             </div>
+            <div id="navUsername" class="navUsername"></div>
+            <div class="button" onclick="logout()">Logout</div>
             <div onclick="searchItems()" class="searchicon">&#128269;</div>
             <input type="search" class="searchbar" placeholder="Search..." />
           </div>

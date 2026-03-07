@@ -3,10 +3,30 @@ const cors = require("cors");
 const pool = require("./db");
 const multer = require("multer");
 const path = require("path");
+const bcrypt = require("bcrypt");
+const session = require("express-session");
 
 const app = express();
-app.use(cors());
+
+app.use(express.static(path.join(__dirname, "HTML-files")));
+
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    credentials: true,
+  }),
+);
+
 app.use(express.json());
+
+app.use(
+  session({
+    secret: "sealio_secret",
+    resave: false,
+    saveUninitialized: false,
+    cookie: { maxAge: 24 * 60 * 60 * 1000 }, // 1 day
+  }),
+);
 
 // serve uploaded files
 app.use("/uploads", express.static("uploads"));
@@ -28,12 +48,19 @@ const upload = multer({ storage });
 
 app.post(
   "/upload",
+  (req, res, next) => {
+    if (!req.session.user) {
+      return res.status(401).json({ error: "You must be logged in to upload" });
+    }
+    next();
+  },
   upload.fields([
     { name: "video", maxCount: 1 },
     { name: "thumbnail", maxCount: 1 },
   ]),
   async (req, res) => {
-    const { title, description, user_id } = req.body;
+    const { title, description } = req.body;
+    const user_id = req.session.user.id; // comes from session now, not hardcoded!
     const video_url = `/uploads/videos/${req.files["video"][0].filename}`;
     const thumbnail_url = `/uploads/thumbnails/${req.files["thumbnail"][0].filename}`;
 
@@ -91,4 +118,77 @@ app.get("/videos", async (req, res) => {
 
 app.listen(3000, () => {
   console.log("Server running on port 3000");
+});
+
+// signup
+app.post("/signup", async (req, res) => {
+  const { username, password } = req.body;
+  console.log("Signup attempt:", username);
+  try {
+    if (!username || !password) {
+      return res.status(400).json({ error: "Please fill in all fields" });
+    }
+    if (username.length > 20) {
+      return res
+        .status(400)
+        .json({ error: "Username must be 20 characters or less" });
+    }
+    if (password.length < 6) {
+      return res
+        .status(400)
+        .json({ error: "Password must be at least 6 characters" });
+    }
+    const hash = await bcrypt.hash(password, 10);
+    console.log("Hash generated");
+    const result = await pool.query(
+      "INSERT INTO users (username, password_hash) VALUES ($1, $2) RETURNING id, username",
+      [username, hash],
+    );
+    console.log("User created:", result.rows[0]);
+    req.session.user = result.rows[0];
+    res.json(result.rows[0]);
+  } catch (err) {
+    console.log("Signup error:", err.message);
+    if (err.code === "23505") {
+      return res.status(400).json({ error: "Username already taken" });
+    }
+    res.status(500).json({ error: "Something went wrong, please try again" });
+  }
+});
+
+// login
+app.post("/login", async (req, res) => {
+  const { username, password } = req.body;
+  try {
+    const result = await pool.query("SELECT * FROM users WHERE username = $1", [
+      username,
+    ]);
+    if (result.rows.length === 0) {
+      return res.status(401).json({ error: "Invalid username or password" });
+    }
+    const user = result.rows[0];
+    const match = await bcrypt.compare(password, user.password_hash);
+    if (!match) {
+      return res.status(401).json({ error: "Invalid username or password" });
+    }
+    req.session.user = { id: user.id, username: user.username };
+    res.json({ id: user.id, username: user.username });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// logout
+app.post("/logout", (req, res) => {
+  req.session.destroy();
+  res.json({ message: "Logged out." });
+});
+
+// check who's logged in
+app.get("/me", (req, res) => {
+  if (req.session.user) {
+    res.json(req.session.user);
+  } else {
+    res.status(401).json({ error: "Not logged in." });
+  }
 });

@@ -49,6 +49,7 @@ async function uploadVideo() {
 
   const response = await fetch("http://localhost:3000/upload", {
     method: "POST",
+    credentials: "include",
     body: formData,
   });
 
