@@ -1,0 +1,1 @@
+CREATE DATABASE sealio_database;
