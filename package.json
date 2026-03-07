@@ -1,0 +1,26 @@
+{
+  "name": "hackathon-project-thephoques",
+  "version": "1.0.0",
+  "description": "## The Phoques",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phantypengy/hackathon-project-thephoques.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/phantypengy/hackathon-project-thephoques/issues"
+  },
+  "homepage": "https://github.com/phantypengy/hackathon-project-thephoques#readme",
+  "dependencies": {
+    "pg": "^8.20.0"
+  }
+}
