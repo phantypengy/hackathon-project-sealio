@@ -10,8 +10,6 @@ Web server 3: Audio/Video streaming server
 
 We're making a video site similar to YouTube, with planned features being:
 
-
-
 # Features
 
 ### Accounts
@@ -38,15 +36,11 @@ Users may comment under uploaded videos
 
 You can search through uploaded videos via the search bar at the top.
 
-
-
 # Planned features
 
 ### Account page
 
 A separate page for every user where all of the user's videos are listed
-
-
 
 # Tech Stack
 
@@ -91,3 +85,23 @@ A relational database system that stores all data in tables - handles accounts, 
 ### node-postgres (pg)
 
 Allows Node.js to talk to PostgreSQL
+
+# Note for cloning this repo
+
+If you are cloning this repo, you will need to manually install node modules and set up an uploads folder.
+
+First, retrieve node_modules/
+Make sure you have npm installed, and run
+
+```bash
+npm install
+```
+
+Then, within the project root, create a folder called uploads with two folders inside; videos/ and thumbnails/. This is where uploaded videos will go.
+The filesystem for these folders should look like this:
+
+```
+uploads/
+├── videos/
+└── thumbnails/
+```
