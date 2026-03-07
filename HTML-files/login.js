@@ -14,7 +14,7 @@ async function login() {
   const username = document.getElementById("loginUsername").value;
   const password = document.getElementById("loginPassword").value;
 
-  const response = await fetch("http://localhost:3000/login", {
+  const response = await fetch("/login", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     credentials: "include",
@@ -40,7 +40,7 @@ async function signup() {
     return;
   }
 
-  const response = await fetch("http://localhost:3000/signup", {
+  const response = await fetch("/signup", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     credentials: "include",

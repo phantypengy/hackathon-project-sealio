@@ -1,5 +1,5 @@
 async function logout() {
-  await fetch("http://localhost:3000/logout", {
+  await fetch("/logout", {
     method: "POST",
     credentials: "include",
   });
@@ -9,7 +9,7 @@ async function logout() {
 
 async function loadUser() {
   try {
-    const response = await fetch("http://localhost:3000/me", {
+    const response = await fetch("/me", {
       credentials: "include",
     });
     if (response.ok) {

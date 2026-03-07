@@ -12,7 +12,7 @@ app.use(express.static(path.join(__dirname, "HTML-files")));
 
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: true,
     credentials: true,
   }),
 );
@@ -44,7 +44,30 @@ const storage = multer.diskStorage({
   },
 });
 
-const upload = multer({ storage });
+const allowedVideoTypes = ["video/mp4", "video/webm", "video/ogg"];
+const allowedImageTypes = [
+  "image/jpeg",
+  "image/png",
+  "image/gif",
+  "image/webp",
+];
+
+const upload = multer({
+  storage,
+  fileFilter: (req, file, cb) => {
+    if (file.fieldname === "video") {
+      if (!allowedVideoTypes.includes(file.mimetype)) {
+        return cb(new Error("Only mp4, webm and ogg videos are allowed"));
+      }
+    }
+    if (file.fieldname === "thumbnail") {
+      if (!allowedImageTypes.includes(file.mimetype)) {
+        return cb(new Error("Only jpg, png, gif and webp images are allowed"));
+      }
+    }
+    cb(null, true);
+  },
+});
 
 app.post(
   "/upload",

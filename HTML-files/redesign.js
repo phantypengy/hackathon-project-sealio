@@ -1,5 +1,5 @@
 async function loadVideos() {
-  const response = await fetch("http://localhost:3000/videos", {
+  const response = await fetch("/videos", {
     credentials: "include",
   });
   const videos = await response.json();
@@ -18,7 +18,7 @@ async function loadVideos() {
     videoEl.dataset.id = video.id;
     videoEl.innerHTML = `
             <div class="thumbnail">
-                <img src="http://localhost:3000${video.thumbnail_url}" alt="Video Thumbnail" />
+                <img src="${video.thumbnail_url}" alt="Video Thumbnail" />
             </div>
             <div class="videoInfo">
                 <h4 class="videoTitle">${video.title}</h4>
@@ -51,12 +51,9 @@ async function searchItems() {
     return;
   }
 
-  const response = await fetch(
-    `http://localhost:3000/search?q=${encodeURIComponent(query)}`,
-    {
-      credentials: "include",
-    },
-  );
+  const response = await fetch(`/search?q=${encodeURIComponent(query)}`, {
+    credentials: "include",
+  });
   const videos = await response.json();
 
   const videoGrid = document.querySelector(".videoGrid");
@@ -73,7 +70,7 @@ async function searchItems() {
     videoEl.dataset.id = video.id;
     videoEl.innerHTML = `
             <div class="thumbnail">
-                <img src="http://localhost:3000${video.thumbnail_url}" alt="Video Thumbnail" />
+                <img src="${video.thumbnail_url}" alt="Video Thumbnail" />
             </div>
             <div class="videoInfo">
                 <h4 class="videoTitle">${video.title}</h4>

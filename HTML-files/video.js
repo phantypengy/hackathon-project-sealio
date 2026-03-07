@@ -9,7 +9,7 @@ async function loadVideo() {
     return;
   }
 
-  const response = await fetch(`http://localhost:3000/videos/${id}`, {
+  const response = await fetch(`/videos/${id}`, {
     credentials: "include",
   });
 
@@ -24,10 +24,9 @@ async function loadVideo() {
   console.log("Video data:", video);
 
   document.title = `Sealio - ${video.title}`;
-  document.getElementById("mainPlayer").src =
-    `http://localhost:3000${video.video_url}`;
+  document.getElementById("mainPlayer").src = `${video.video_url}`;
   const player = document.getElementById("mainPlayer");
-  player.src = `http://localhost:3000${video.video_url}`;
+  player.src = `${video.video_url}`;
   player.play();
   document.getElementById("videoTitle").textContent = video.title;
   document.getElementById("videoUploader").textContent =
@@ -45,7 +44,7 @@ async function loadVideo() {
 loadVideo();
 
 async function loadRelated(currentId) {
-  const response = await fetch("http://localhost:3000/videos", {
+  const response = await fetch("/videos", {
     credentials: "include",
   });
   const videos = await response.json();
@@ -64,7 +63,7 @@ async function loadRelated(currentId) {
     const el = document.createElement("div");
     el.classList.add("relatedVideo");
     el.innerHTML = `
-            <img src="http://localhost:3000${video.thumbnail_url}" alt="thumbnail" />
+            <img src="${video.thumbnail_url}" alt="thumbnail" />
             <div class="relatedInfo">
                 <p class="relatedTitle">${video.title}</p>
                 <p class="relatedUploader">${video.username}</p>
@@ -78,12 +77,9 @@ async function loadRelated(currentId) {
 }
 
 async function loadComments(videoId) {
-  const response = await fetch(
-    `http://localhost:3000/videos/${videoId}/comments`,
-    {
-      credentials: "include",
-    },
-  );
+  const response = await fetch(`/videos/${videoId}/comments`, {
+    credentials: "include",
+  });
   const comments = await response.json();
   const list = document.getElementById("commentsList");
   list.innerHTML = "";
@@ -114,7 +110,7 @@ async function postComment() {
   const params = new URLSearchParams(window.location.search);
   const id = params.get("id");
 
-  const response = await fetch(`http://localhost:3000/videos/${id}/comments`, {
+  const response = await fetch(`/videos/${id}/comments`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     credentials: "include",

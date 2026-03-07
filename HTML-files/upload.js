@@ -47,7 +47,7 @@ async function uploadVideo() {
   formData.append("description", document.querySelector("#description").value);
   formData.append("user_id", 1);
 
-  const response = await fetch("http://localhost:3000/upload", {
+  const response = await fetch("/upload", {
     method: "POST",
     credentials: "include",
     body: formData,
@@ -65,7 +65,7 @@ async function uploadVideo() {
 }
 
 async function checkLogin() {
-  const response = await fetch("http://localhost:3000/me", {
+  const response = await fetch("/me", {
     credentials: "include",
   });
   if (!response.ok) {
