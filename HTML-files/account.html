@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Sealio - My Seal</title>
+
+<link rel="stylesheet" href="redesign.css" />
+<link rel="icon" href="assets/favicon.ico" />
+
+<script src="shared.js" defer></script>
+<script src="account.js" defer></script>
+
+</head>
+
+<body>
+
+<div class="app">
+
+<header class="header">
+
+<div class="header-top">
+<div class="brandBlock">
+<h1 class="title">Sealio</h1>
+<p class="tagline">Classic streaming, timeless stories</p>
+</div>
+</div>
+
+<div class="header-bottom">
+
+<div class="navbar">
+
+<div class="button" onclick="window.location.href='redesign.html'">
+Home
+</div>
+
+<div class="button" onclick="window.location.href='watchlater.html'">
+Watch Later
+</div>
+
+<div class="button" onclick="window.location.href='upload.html'">
+Upload
+</div>
+
+<div class="button" onclick="window.location.href='account.html'">
+My Seal
+</div>
+
+<div class="bar">
+<marquee behavior="scroll" direction="left">
+Your Sealio profile
+</marquee>
+</div>
+
+<div id="navUsername" class="navUsername"></div>
+
+<div class="button" onclick="logout()">Logout</div>
+
+</div>
+</div>
+
+</header>
+
+<div class="body">
+
+<div class="content">
+
+<section class="librarySection">
+
+<div class="sectionHeadingRow">
+
+<h2 class="sectionHeading">My Seal</h2>
+
+<p class="sectionSubtext" id="accountSubtext">
+Your uploaded videos
+</p>
+
+</div>
+
+<!-- shown if not logged in -->
+
+<div id="loginRequired" class="emptyState" style="display:none;">
+
+<h3>Please log in</h3>
+
+<p>You must log in to access your account.</p>
+
+<div class="button" onclick="window.location.href='login.html'">
+Go to Login
+</div>
+
+</div>
+
+<!-- user info -->
+
+<div id="userInfo" style="display:none; margin-bottom:20px;">
+
+<p><strong>Username:</strong> <span id="accountUsername"></span></p>
+
+</div>
+
+<!-- uploaded videos grid -->
+
+<div class="videoGrid" id="myVideosGrid"></div>
+
+</section>
+
+</div>
+</div>
+
+</div>
+
+</body>
+</html>
