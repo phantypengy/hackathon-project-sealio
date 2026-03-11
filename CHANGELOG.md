@@ -2,6 +2,7 @@
 Created GitHub repo
 
 07/03/2026
+Version 1.0
 changelog
 
 ### Major features
