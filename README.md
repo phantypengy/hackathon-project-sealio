@@ -88,20 +88,4 @@ Allows Node.js to talk to PostgreSQL
 
 # Note for cloning this repo
 
-If you are cloning this repo, you will need to manually install node modules and set up an uploads folder.
-
-First, retrieve node_modules/
-Make sure you have npm installed, and run
-
-```bash
-npm install
-```
-
-Then, within the project root, create a folder called uploads with two folders inside; videos/ and thumbnails/. This is where uploaded videos will go.
-The filesystem for these folders should look like this:
-
-```
-uploads/
-├── videos/
-└── thumbnails/
-```
+See cloning.md
