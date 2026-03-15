@@ -434,7 +434,9 @@ app.listen(3000, () => {
 // likes / dislikes
 app.post("/videos/:id/like", async (req, res) => {
   if (!req.session.user) {
-    return res.status(401).json({ error: "You must be logged in" });
+    return res
+      .status(401)
+      .json({ error: "You must be logged in to vote on videos." });
   }
   const { type } = req.body;
   try {
