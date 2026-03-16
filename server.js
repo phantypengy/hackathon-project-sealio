@@ -191,7 +191,7 @@ app.get("/me", (req, res) => {
   }
 });
 
-// fetch all videos
+// fetch all videos & sort by upload date (newest -> oldest)
 app.get("/videos", async (req, res) => {
   try {
     const result = await pool.query(

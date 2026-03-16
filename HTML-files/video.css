@@ -320,13 +320,14 @@ hr {
 }
 
 .likeButtons button {
-  background-color: #333;
+  background-color: rgba(0, 0, 0, 0);
   color: white;
-  border: none;
+  border: ultrathick white 2px;
   border-radius: 10px;
   padding: 6px 14px;
   cursor: pointer;
   font-size: 13px;
+  transition-duration: 0.5s;
 }
 
 .likeButtons button:hover {
@@ -334,5 +335,25 @@ hr {
 }
 
 .likeButtons button.voted {
-  background-color: rgb(93, 93, 240);
+  background-color: #c89b2c;
+  animation: shake 0.5s;
+  animation-iteration-count: calc(0+1);
+}
+
+@keyframes shake {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(45deg);
+  }
+  50% {
+    transform: scale(150%);
+  }
+  75% {
+    transform: rotate(-45deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
 }

@@ -10,11 +10,6 @@ async function loadVideos() {
 
     const videos = await response.json();
 
-    for (let i = videos.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [videos[i], videos[j]] = [videos[j], videos[i]];
-    }
-
     updateSectionHeader(
       "Featured Videos",
       "Explore the collection of videos on Sealio",
