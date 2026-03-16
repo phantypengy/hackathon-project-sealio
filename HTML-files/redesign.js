@@ -11,7 +11,7 @@ async function loadVideos() {
     const videos = await response.json();
 
     updateSectionHeader(
-      "Featured Videos",
+      "Recently Uploaded Videos",
       "Explore the collection of videos on Sealio",
     );
     renderVideos(videos, "No videos available yet.");

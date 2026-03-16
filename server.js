@@ -60,12 +60,14 @@ const upload = multer({
   fileFilter: (req, file, cb) => {
     if (file.fieldname === "video") {
       if (!allowedVideoTypes.includes(file.mimetype)) {
+        alert("File type not supported! Please use mp4, webm or ogg.");
         return cb(new Error("Only mp4, webm and ogg videos are allowed"));
       }
     }
 
     if (file.fieldname === "thumbnail") {
       if (!allowedImageTypes.includes(file.mimetype)) {
+        alert("File type not supported! Please use jpg, png, gif or webp.");
         return cb(new Error("Only jpg, png, gif and webp images are allowed"));
       }
     }
