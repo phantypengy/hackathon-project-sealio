@@ -36,8 +36,6 @@ Users may comment under uploaded videos
 
 You can search through uploaded videos via the search bar at the top.
 
-# Planned features
-
 ### Account page
 
 A separate page for every user where all of the user's videos are listed
